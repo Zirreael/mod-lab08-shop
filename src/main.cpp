@@ -30,40 +30,40 @@ int main() {
 	int items = 7;
 	int len = 10;
 	Shop shop(cash, shopIntens, len);
-	std::cout << "Ìàãàçèí ñîçäàí.";
+	std::cout << "ÃŒÃ Ã£Ã Ã§Ã¨Ã­ Ã±Ã®Ã§Ã¤Ã Ã­.";
 	SpawnClients(shop, 100, clientIntens, items);
-	std::cout << "\nÏîêóïàòåëè ñîçäàíû.\n";
+	std::cout << "\nÃÃ®ÃªÃ³Ã¯Ã Ã²Ã¥Ã«Ã¨ Ã±Ã®Ã§Ã¤Ã Ã­Ã».\n";
 	shop.Off();
 	auto stats = shop.getStats();
 	float workTime = stats.workTime.count();
 	float visitTime = stats.clientVisitTime.count() / stats.acceptedClients;
-	std::cout << "\nÎáñëóæåíî êëèåíòîâ: " << stats.acceptedClients;
-	std::cout << "\nÎòêëîíåíî: " << stats.declinedClients;
-	std::cout << "\nÎáùåå âðåìÿ ðàáîòû: " << workTime << "\n";
+	std::cout << "\nÃŽÃ¡Ã±Ã«Ã³Ã¦Ã¥Ã­Ã® ÃªÃ«Ã¨Ã¥Ã­Ã²Ã®Ã¢: " << stats.acceptedClients;
+	std::cout << "\nÃŽÃ²ÃªÃ«Ã®Ã­Ã¥Ã­Ã®: " << stats.declinedClients;
+	std::cout << "\nÃŽÃ¡Ã¹Ã¥Ã¥ Ã¢Ã°Ã¥Ã¬Ã¿ Ã°Ã Ã¡Ã®Ã²Ã»: " << workTime << "\n";
 	int id = 1;
 	float sumTime = 0;
 	for (auto& time : stats.cashWorkTime) {
-		std::cout << "\nÊàññà ¹" << id << " ðàáîòàëà " << time.count();
+		std::cout << "\nÃŠÃ Ã±Ã±Ã  Â¹" << id << " Ã°Ã Ã¡Ã®Ã²Ã Ã«Ã  " << time.count();
 		sumTime += time.count();
 		id++;
 	}
 	float avgTime = sumTime / cash;
-	std::cout << "\n\nÑðåäíåå âðåìÿ ðàáîòû: " << avgTime;
-	std::cout << "\nÑðåäíåå âðåìÿ ïðîñòîÿ: " << workTime - avgTime;
+	std::cout << "\n\nÃ‘Ã°Ã¥Ã¤Ã­Ã¥Ã¥ Ã¢Ã°Ã¥Ã¬Ã¿ Ã°Ã Ã¡Ã®Ã²Ã»: " << avgTime;
+	std::cout << "\nÃ‘Ã°Ã¥Ã¤Ã­Ã¥Ã¥ Ã¢Ã°Ã¥Ã¬Ã¿ Ã¯Ã°Ã®Ã±Ã²Ã®Ã¿: " << workTime - avgTime;
 	Result theory = Calculate(shopIntens, clientIntens * items, cash, len);
 	Result real = CalcActual(stats, len);
-	std::cout << "\n\nÒåîðèòè÷åñêèå ðåçóëüòàòû:\n";
+	std::cout << "\n\nÃ’Ã¥Ã®Ã°Ã¨Ã²Ã¨Ã·Ã¥Ã±ÃªÃ¨Ã¥ Ã°Ã¥Ã§Ã³Ã«Ã¼Ã²Ã Ã²Ã»:\n";
 	PrintResult(theory);
-	std::cout << "\n\nÐåàëüíûå ðåçóëüòàòû:\n";
+	std::cout << "\n\nÃÃ¥Ã Ã«Ã¼Ã­Ã»Ã¥ Ã°Ã¥Ã§Ã³Ã«Ã¼Ã²Ã Ã²Ã»:\n";
 	PrintResult(real);
 }
 
 void PrintResult(Result res) {
-	std::cout << "\nÂåðîÿòíîñòü îòêàçà: " << res.Prej;
-	std::cout << "\nÎòíîñèòåëüíàÿ ïðîïóñêíàÿ ñïîñîáíîñòü: " << res.Q;
-	std::cout << "\nÀáñîëþòíàÿ ïðîïóñêíàÿ ñïîñîáíîñòü: " << res.A;
-	std::cout << "\nÑðåäíÿÿ äëèíà î÷åðåäè: " << res.Lq;
-	std::cout << "\nÑðåäíåå âðåìÿ îáñëóæèâàíèÿ: " << res.t;
+	std::cout << "\nÃ‚Ã¥Ã°Ã®Ã¿Ã²Ã­Ã®Ã±Ã²Ã¼ Ã®Ã²ÃªÃ Ã§Ã : " << res.Prej;
+	std::cout << "\nÃŽÃ²Ã­Ã®Ã±Ã¨Ã²Ã¥Ã«Ã¼Ã­Ã Ã¿ Ã¯Ã°Ã®Ã¯Ã³Ã±ÃªÃ­Ã Ã¿ Ã±Ã¯Ã®Ã±Ã®Ã¡Ã­Ã®Ã±Ã²Ã¼: " << res.Q;
+	std::cout << "\nÃ€Ã¡Ã±Ã®Ã«Ã¾Ã²Ã­Ã Ã¿ Ã¯Ã°Ã®Ã¯Ã³Ã±ÃªÃ­Ã Ã¿ Ã±Ã¯Ã®Ã±Ã®Ã¡Ã­Ã®Ã±Ã²Ã¼: " << res.A;
+	std::cout << "\nÃ‘Ã°Ã¥Ã¤Ã­Ã¿Ã¿ Ã¤Ã«Ã¨Ã­Ã  Ã®Ã·Ã¥Ã°Ã¥Ã¤Ã¨: " << res.Lq;
+	std::cout << "\nÃ‘Ã°Ã¥Ã¤Ã­Ã¥Ã¥ Ã¢Ã°Ã¥Ã¬Ã¿ Ã®Ã¡Ã±Ã«Ã³Ã¦Ã¨Ã¢Ã Ã­Ã¨Ã¿: " << res.t;
 }
 
 long Fact(int n)
