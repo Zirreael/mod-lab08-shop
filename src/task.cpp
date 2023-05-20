@@ -1,7 +1,7 @@
 ﻿#include "task.h"
 
 Statistic::Statistic():
-	workTime{ fsec(0) },
+    workTime{ fsec(0) },
     acceptedClients{ 0 },
     declinedClients{ 0 },
     cashWorkTime{ std::vector<fsec>() },
