@@ -1,4 +1,4 @@
-﻿#include "task.h"
+#include "task.h"
 
 Statistic::Statistic():
     workTime{ fsec(0) },
