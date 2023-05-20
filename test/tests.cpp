@@ -3,9 +3,9 @@
 #include "task.h"
 TEST(TestCaseName, Test1) {
   float shopIntens = 10;
-	float clientIntens = 30;
-	int cash = 5;
-	int items = 7;
+  float clientIntens = 30;
+  int cash = 5;
+  int items = 7;
 	int len = 10;
   Shop shop(cash, shopIntens, len);
 	SpawnClients(shop, 100, clientIntens, items);
